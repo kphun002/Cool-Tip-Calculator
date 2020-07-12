@@ -22,7 +22,7 @@ class SettingsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         let store = UserDefaults.standard
-        let indexOfDefaultTip = store.integer(forKey: "defaultTip")
+        let indexOfDefaultTip = store.integer(forKey: "indexOfDefaultTip")
         defaultTipSegmentedControl.selectedSegmentIndex = indexOfDefaultTip
     }
 
@@ -30,7 +30,7 @@ class SettingsViewController: UIViewController {
         let indexOfDefaultTip = defaultTipSegmentedControl.selectedSegmentIndex
         
         let store = UserDefaults.standard
-        store.set(indexOfDefaultTip, forKey: "defaultTip")
+        store.set(indexOfDefaultTip, forKey: "indexOfDefaultTip")
         store.set(true, forKey: "defaultTipChanged")
     }
     /*

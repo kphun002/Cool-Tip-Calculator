@@ -23,8 +23,15 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         let store = UserDefaults.standard
-        let indexOfDefaultTip = store.integer(forKey: "defaultTip")
+        
+        let showLastBill = store.bool(forKey: "showLastBill")
+        let indexOfDefaultTip = store.integer(forKey: "indexOfDefaultTip")
         let defaultTipChanged = store.bool(forKey: "defaultTipChanged")
+        
+        if (showLastBill) {
+            let lastBill = store.double(forKey: "lastBill")
+            billField.text = String(format: "%.2f", lastBill)
+        }
         
         if (defaultTipChanged) {
             tipControl.selectedSegmentIndex = indexOfDefaultTip
@@ -37,21 +44,26 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     
+    @IBAction func didChangeBill(_ sender: Any) {
+        let store = UserDefaults.standard
+        let bill = billField.text
+        store.set(bill, forKey: "lastBill")
+        
+        calculateTip()
+    }
+    
     @IBAction func didChangeTip(_ sender: Any) {
         calculateTip()
     }
     
     fileprivate func calculateTip() {
-        //Get the bill
         let bill = Double(billField.text!) ?? 0
         
-        //Calculate tip and total
         let tipPercentages = [0.15, 0.18, 0.2]
         
         let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
         let total = bill + tip
         
-        //Update labels
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
     }

@@ -42,7 +42,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="didChangeTip:" destination="BYZ-38-t0r" eventType="editingChanged" id="3pw-u1-A7O"/>
+                                    <action selector="didChangeBill:" destination="BYZ-38-t0r" eventType="editingChanged" id="Up5-hV-CWM"/>
                                 </connections>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vyx-Sg-YxP">
@@ -54,7 +54,7 @@
                                     <segment title="20%"/>
                                 </segments>
                                 <connections>
-                                    <action selector="didChangeTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="lby-Fq-1NM"/>
+                                    <action selector="didChangeTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="iCh-ze-8tQ"/>
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76D-l0-U2v">
