@@ -15,6 +15,7 @@
 		4BD72D2824BA1A8300AA44AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BD72D2624BA1A8300AA44AD /* LaunchScreen.storyboard */; };
 		4BD72D3324BA1A8300AA44AD /* Cool_Tip_CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD72D3224BA1A8300AA44AD /* Cool_Tip_CalculatorTests.swift */; };
 		4BD72D3E24BA1A8300AA44AD /* Cool_Tip_CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD72D3D24BA1A8300AA44AD /* Cool_Tip_CalculatorUITests.swift */; };
+		4BD72D8824BA8AF100AA44AD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD72D8724BA8AF100AA44AD /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		4BD72D3924BA1A8300AA44AD /* Cool Tip CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cool Tip CalculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BD72D3D24BA1A8300AA44AD /* Cool_Tip_CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cool_Tip_CalculatorUITests.swift; sourceTree = "<group>"; };
 		4BD72D3F24BA1A8300AA44AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BD72D8724BA8AF100AA44AD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				4BD72D1D24BA1A8000AA44AD /* SceneDelegate.swift */,
 				4BD72D1F24BA1A8000AA44AD /* ViewController.swift */,
 				4BD72D2124BA1A8000AA44AD /* Main.storyboard */,
+				4BD72D8724BA8AF100AA44AD /* SettingsViewController.swift */,
 				4BD72D2424BA1A8300AA44AD /* Assets.xcassets */,
 				4BD72D2624BA1A8300AA44AD /* LaunchScreen.storyboard */,
 				4BD72D2924BA1A8300AA44AD /* Info.plist */,
@@ -262,6 +265,7 @@
 				4BD72D2024BA1A8000AA44AD /* ViewController.swift in Sources */,
 				4BD72D1C24BA1A8000AA44AD /* AppDelegate.swift in Sources */,
 				4BD72D1E24BA1A8000AA44AD /* SceneDelegate.swift in Sources */,
+				4BD72D8824BA8AF100AA44AD /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

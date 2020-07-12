@@ -17,27 +17,38 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let store = UserDefaults.standard
+        let indexOfDefaultTip = store.integer(forKey: "defaultTip")
+        tipControl.selectedSegmentIndex = indexOfDefaultTip
+        calculateTip()
+    }
     
     @IBAction func onTap(_ sender: Any) {
         view.endEditing(true)
     }
     
-    @IBAction func calculateTip(_ sender: Any) {
+    fileprivate func calculateTip() {
         //Get the bill
         let bill = Double(billField.text!) ?? 0
-
+        
         //Calculate tip and total
         let tipPercentages = [0.15, 0.18, 0.2]
-
+        
         let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
         let total = bill + tip
-
+        
         //Update labels
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
+    }
+    
+    @IBAction func didChangeTip(_ sender: Any) {
+        calculateTip()
     }
 }
 
