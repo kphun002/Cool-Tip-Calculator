@@ -31,6 +31,7 @@ class SettingsViewController: UIViewController {
         
         let store = UserDefaults.standard
         store.set(indexOfDefaultTip, forKey: "defaultTip")
+        store.set(true, forKey: "defaultTipChanged")
     }
     /*
     // MARK: - Navigation

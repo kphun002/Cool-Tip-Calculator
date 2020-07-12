@@ -24,12 +24,21 @@ class ViewController: UIViewController {
         
         let store = UserDefaults.standard
         let indexOfDefaultTip = store.integer(forKey: "defaultTip")
-        tipControl.selectedSegmentIndex = indexOfDefaultTip
-        calculateTip()
+        let defaultTipChanged = store.bool(forKey: "defaultTipChanged")
+        
+        if (defaultTipChanged) {
+            tipControl.selectedSegmentIndex = indexOfDefaultTip
+            calculateTip()
+            store.set(false, forKey: "defaultTipChanged")
+        }
     }
     
     @IBAction func onTap(_ sender: Any) {
         view.endEditing(true)
+    }
+    
+    @IBAction func didChangeTip(_ sender: Any) {
+        calculateTip()
     }
     
     fileprivate func calculateTip() {
@@ -45,10 +54,6 @@ class ViewController: UIViewController {
         //Update labels
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
-    }
-    
-    @IBAction func didChangeTip(_ sender: Any) {
-        calculateTip()
     }
 }
 
