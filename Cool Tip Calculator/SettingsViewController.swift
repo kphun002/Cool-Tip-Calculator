@@ -12,11 +12,15 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var defaultTipSegmentedControl: UISegmentedControl!
     @IBOutlet weak var splitNumber: UILabel!
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        minusButton.layer.cornerRadius = minusButton.frame.height / 2.0
+        plusButton.layer.cornerRadius = plusButton.frame.height / 2.0
     }
     
     override func viewWillAppear(_ animated: Bool) {

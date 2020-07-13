@@ -17,6 +17,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var customTipView: UIView!
     @IBOutlet weak var customTip: UITextField!
     @IBOutlet weak var splitNumber: UILabel!
+    @IBOutlet weak var splitContainerView: UIView!
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +32,10 @@ class ViewController: UIViewController {
         
         let defaultSplit = store.integer(forKey: "split")
         splitNumber.text = String(defaultSplit)
+        
+        splitContainerView.layer.cornerRadius = 15.0
+        minusButton.layer.cornerRadius = minusButton.frame.height / 2.0
+        plusButton.layer.cornerRadius = plusButton.frame.height / 2.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,8 +124,8 @@ class ViewController: UIViewController {
         let split = Double(splitNumber.text!) ?? 0
         let total = (bill + tip) / split
         
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        tipLabel.text = String(format: "%.2f", tip)
+        totalLabel.text = String(format: "%.2f", total)
     }
 }
 
