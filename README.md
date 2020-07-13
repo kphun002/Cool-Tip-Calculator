@@ -4,7 +4,7 @@
 
 Submitted by: **Karol Phung Lopez**
 
-Time spent: **15** hours spent in total
+Time spent: **18** hours spent in total
 
 ## User Stories
 
@@ -35,7 +35,7 @@ GIF created with [Recordit](https://recordit.co/).
 
 ## Notes
 
-This is my first native iOS application. I could not have been more excited through the whole development process.
+This is my first native iOS application. I couldn't have been more excited through the whole development process.
 
 ## License
 
