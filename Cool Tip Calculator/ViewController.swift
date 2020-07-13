@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
+    @IBOutlet weak var customTipView: UIView!
+    @IBOutlet weak var customTip: UITextField!
+    @IBOutlet weak var splitNumber: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,7 @@ class ViewController: UIViewController {
         
         if (defaultTipChanged) {
             tipControl.selectedSegmentIndex = indexOfDefaultTip
+            customTipView.isHidden = true
             calculateTip()
             store.set(false, forKey: "defaultTipChanged")
         }
@@ -48,21 +52,53 @@ class ViewController: UIViewController {
         let store = UserDefaults.standard
         let bill = billField.text
         store.set(bill, forKey: "lastBill")
-        
         calculateTip()
     }
     
     @IBAction func didChangeTip(_ sender: Any) {
+        if (tipControl.selectedSegmentIndex == 3) {
+            customTipView.isHidden = false
+        }
+        else {
+            customTipView.isHidden = true
+        }
+        calculateTip()
+    }
+    
+    @IBAction func didChangeCustom(_ sender: Any) {
+        calculateTip()
+    }
+    
+    @IBAction func decreaseSplit(_ sender: Any) {
+        let split = Int(splitNumber.text!) ?? 0
+        if (split > 1) {
+            splitNumber.text = String(split - 1)
+            calculateTip()
+        }
+    }
+    
+    @IBAction func increaseSplit(_ sender: Any) {
+        let split = Int(splitNumber.text!) ?? 0
+        splitNumber.text = String(split + 1)
         calculateTip()
     }
     
     fileprivate func calculateTip() {
         let bill = Double(billField.text!) ?? 0
         
-        let tipPercentages = [0.15, 0.18, 0.2]
+        let tip: Double
         
-        let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
-        let total = bill + tip
+        if (tipControl.selectedSegmentIndex == 3) {
+            let custom = Double(customTip.text!) ?? 0
+            tip = bill * custom * 0.01
+        }
+        else {
+            let tipPercentages = [0.15, 0.18, 0.2]
+            tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
+        }
+        
+        let split = Double(splitNumber.text!) ?? 0
+        let total = (bill + tip) / split
         
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
