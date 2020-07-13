@@ -35,7 +35,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-This is my first native iOS mobile application. I could not be more excited through the whole development process.
+This is my first native iOS application. I could not have been more excited through the whole development process.
 
 ## License
 
