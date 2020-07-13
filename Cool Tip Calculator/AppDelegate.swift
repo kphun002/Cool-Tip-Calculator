@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let store = UserDefaults.standard
         if let terminateDate = store.object(forKey: "terminateDate") as? Date {
             let timePassed = abs(terminateDate.timeIntervalSince(Date()))
-            if (timePassed <= 300) {
+            if (timePassed <= 600) {
                 store.set(true, forKey: "showLastBill")
             }
             else {

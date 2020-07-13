@@ -20,6 +20,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let store = UserDefaults.standard
+        
+        let indexOfDefaultTip = store.integer(forKey: "indexOfDefaultTip")
+        tipControl.selectedSegmentIndex = indexOfDefaultTip
+        
+        let defaultSplit = store.integer(forKey: "split")
+        splitNumber.text = String(defaultSplit)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,8 +36,8 @@ class ViewController: UIViewController {
         let store = UserDefaults.standard
         
         let showLastBill = store.bool(forKey: "showLastBill")
-        let indexOfDefaultTip = store.integer(forKey: "indexOfDefaultTip")
         let defaultTipChanged = store.bool(forKey: "defaultTipChanged")
+        let defaultSplitChanged = store.bool(forKey: "defaultSplitChanged")
         
         if (showLastBill) {
             let lastBill = store.double(forKey: "lastBill")
@@ -37,10 +45,18 @@ class ViewController: UIViewController {
         }
         
         if (defaultTipChanged) {
+            let indexOfDefaultTip = store.integer(forKey: "indexOfDefaultTip")
             tipControl.selectedSegmentIndex = indexOfDefaultTip
             customTipView.isHidden = true
             calculateTip()
             store.set(false, forKey: "defaultTipChanged")
+        }
+        
+        if (defaultSplitChanged) {
+            let defaultSplit = store.integer(forKey: "split")
+            splitNumber.text = String(defaultSplit)
+            calculateTip()
+            store.set(false, forKey: "defaultSplitChanged")
         }
     }
     

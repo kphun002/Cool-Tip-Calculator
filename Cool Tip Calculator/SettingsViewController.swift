@@ -11,6 +11,7 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var defaultTipSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var splitNumber: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,12 @@ class SettingsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         let store = UserDefaults.standard
+        
         let indexOfDefaultTip = store.integer(forKey: "indexOfDefaultTip")
         defaultTipSegmentedControl.selectedSegmentIndex = indexOfDefaultTip
+        
+        let defaultSplit = store.integer(forKey: "split")
+        splitNumber.text = String(defaultSplit)
     }
 
     @IBAction func defaultTipChanged(_ sender: Any) {
@@ -33,6 +38,29 @@ class SettingsViewController: UIViewController {
         store.set(indexOfDefaultTip, forKey: "indexOfDefaultTip")
         store.set(true, forKey: "defaultTipChanged")
     }
+    
+    @IBAction func decreaseDefaultSplit(_ sender: Any) {
+        let split = Int(splitNumber.text!) ?? 0
+        if (split > 1) {
+            splitNumber.text = String(split - 1)
+            
+            let newSplit = splitNumber.text
+            let store = UserDefaults.standard
+            store.set(newSplit, forKey: "split")
+            store.set(true, forKey: "defaultSplitChanged")
+        }
+    }
+    
+    @IBAction func increaseDefaultSplit(_ sender: Any) {
+        let split = Int(splitNumber.text!) ?? 0
+        splitNumber.text = String(split + 1)
+        
+        let newSplit = splitNumber.text
+        let store = UserDefaults.standard
+        store.set(newSplit, forKey: "split")
+        store.set(true, forKey: "defaultSplitChanged")
+    }
+    
     /*
     // MARK: - Navigation
 
