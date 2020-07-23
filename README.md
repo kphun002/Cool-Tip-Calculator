@@ -17,11 +17,12 @@ The following **optional** features are implemented:
 * [ ] UI animations
 * [X] Remembering the bill amount across app restarts (if <10mins)
 * [ ] Using locale-specific currency and currency thousands separators.
-* [ ] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
+* [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 
 - [X] Custom tip feature
+- [X] If the user selects Custom, the custom tip field becomes the first responder
 - [X] Bill splitting feature with unlimitted number of people
 - [X] Default split feature through settings page
 
