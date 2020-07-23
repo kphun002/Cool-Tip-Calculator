@@ -30,8 +30,21 @@ class ViewController: UIViewController {
         let indexOfDefaultTip = store.integer(forKey: "indexOfDefaultTip")
         tipControl.selectedSegmentIndex = indexOfDefaultTip
         
-        let defaultSplit = store.integer(forKey: "split")
+        var defaultSplit = store.integer(forKey: "split")
+        if (defaultSplit == 0) {
+            store.set(1, forKey: "split")
+            defaultSplit = store.integer(forKey: "split")
+        }
         splitNumber.text = String(defaultSplit)
+        
+        let showLastBill = store.bool(forKey: "showLastBill")
+        if (showLastBill) {
+            let lastBill = store.double(forKey: "lastBill")
+            billField.text = String(format: "%.2f", lastBill)
+        }
+        else {
+            billField.becomeFirstResponder()
+        }
         
         splitContainerView.layer.cornerRadius = 15.0
         minusButton.layer.cornerRadius = minusButton.frame.height / 2.0
@@ -43,14 +56,8 @@ class ViewController: UIViewController {
         
         let store = UserDefaults.standard
         
-        let showLastBill = store.bool(forKey: "showLastBill")
         let defaultTipChanged = store.bool(forKey: "defaultTipChanged")
         let defaultSplitChanged = store.bool(forKey: "defaultSplitChanged")
-        
-        if (showLastBill) {
-            let lastBill = store.double(forKey: "lastBill")
-            billField.text = String(format: "%.2f", lastBill)
-        }
         
         if (defaultTipChanged) {
             let indexOfDefaultTip = store.integer(forKey: "indexOfDefaultTip")
@@ -73,8 +80,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didChangeBill(_ sender: Any) {
-        let store = UserDefaults.standard
         let bill = billField.text
+        let store = UserDefaults.standard
         store.set(bill, forKey: "lastBill")
         calculateTip()
     }
@@ -82,6 +89,7 @@ class ViewController: UIViewController {
     @IBAction func didChangeTip(_ sender: Any) {
         if (tipControl.selectedSegmentIndex == 3) {
             customTipView.isHidden = false
+            customTip.becomeFirstResponder()
         }
         else {
             customTipView.isHidden = true
